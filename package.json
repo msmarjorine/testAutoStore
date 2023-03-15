@@ -1,0 +1,27 @@
+{
+  "name": "testautostore",
+  "version": "1.0.0",
+  "description": "Cypress project",
+  "main": "index.js",
+  "scripts": {
+    "headless": "npx cypress run --browser chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msmarjorine/testAutoStore.git"
+  },
+  "keywords": [
+    "cypress",
+    "javascript",
+    "tests"
+  ],
+  "author": "Golubeva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msmarjorine/testAutoStore/issues"
+  },
+  "homepage": "https://github.com/msmarjorine/testAutoStore#readme",
+  "devDependencies": {
+    "cypress": "^12.8.0"
+  }
+}
