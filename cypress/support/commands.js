@@ -23,3 +23,53 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("visitStoreHomepage", () => {
+  cy.visit("/");
+});
+
+Cypress.Commands.add("visitStoreContactpage", () => {
+  cy.get(".info_links_footer > li > a").contains("Contact Us").click();
+});
+
+Cypress.Commands.add("clickOnHairProducts", () => {
+  cy.get('ul.categorymenu li a[href*="product/category&path="]')
+    .contains("Hair Care")
+    .click();
+});
+
+Cypress.Commands.add("makeSearchRequest", (request) => {
+  cy.get("#filter_keyword").type(request).type("{enter}");
+});
+
+Cypress.Commands.add("submitTheForm", (name, email, enquiry) => {
+  cy.get("#ContactUsFrm_first_name").type(name);
+  cy.get("#ContactUsFrm_email").type(email);
+  cy.get("#ContactUsFrm_enquiry").type(enquiry);
+  cy.get('button[title="Submit"]').click();
+});
+
+Cypress.Commands.add("addProductToBasket", () => {
+  globalThis.data.productName.forEach(function (element) {
+    cy.addProductToBasket(element).then(() => {
+      //debugger
+    });
+  });
+  cy.get(".dropdown-toggle > .label").should("have.text", 3);
+});
+Cypress.Commands.add("selectProduct", (productName) => {
+  cy.get("div.fixed_wrapper .prdocutname").each(($el, index, $list) => {
+    if ($el.text().includes(productName)) {
+      cy.wrap($el).click();
+    }
+  });
+});
+
+Cypress.Commands.add("addProductToBasket", (productName) => {
+  cy.get("div.fixed_wrapper .prdocutname").each(($el, index, $list) => {
+    if ($el.text() === productName) {
+      cy.log($el.text());
+      cy.get(".productcart").eq(index).click();
+    }
+  });
+});
