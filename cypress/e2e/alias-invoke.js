@@ -17,7 +17,7 @@ describe("Alias and Invoke", () => {
     cy.get("@productThumbnail").should("include", "Seaweed");
   });
 
-  it("Validate the number of products", () => {
+  it("Validate the number of products on the homepage", () => {
     cy.get("div.thumbnail").its("length").as("productsNumber");
     cy.get("@productsNumber").should("eq", 16);
     cy.get("a.productcart").eq(0).invoke("attr", "title").as("cartText");
@@ -28,9 +28,11 @@ describe("Alias and Invoke", () => {
     cy.get("div.navbar-collapse").as("header");
     cy.get("@header").should("be.visible");
     cy.get("@header").should("have.css", "border-color", "rgb(16, 16, 16)");
+    cy.get("div.navbar-right").as("headerLinks");
+    cy.get("@headerLinks").children("div").should("have.length", 4);
   });
 
-  it.only("Calculate total of normal and sale products", () => {
+  it("Calculate total of normal and sale products", () => {
     cy.get("div.thumbnail").as("productThumbnail");
     cy.get("div.thumbnail").find(".oneprice").invoke("text").as("itemPrice");
     cy.get("div.thumbnail")
@@ -38,25 +40,21 @@ describe("Alias and Invoke", () => {
       .invoke("text")
       .as("itemSalePrice");
 
-    var itemsTotal = 0;
-    cy.get("@itemPrice").then(($linkText) => {
-      var itemsPriceTotal = 0;
-      var itemPrice = $linkText.split("$");
-      var i;
-      for (i = 0; i < itemPrice.length; i++) {
-        cy.log(itemPrice[i]);
+    let itemsTotal = 0;
+    cy.get("@itemPrice").then((linkText) => {
+      let itemsPriceTotal = 0;
+      let itemPrice = linkText.split("$");
+      for (let i = 0; i < itemPrice.length; i++) {
         itemsPriceTotal += Number(itemPrice[i]);
       }
       cy.log("Total of full price products: " + itemsPriceTotal);
       itemsTotal += itemsPriceTotal;
     });
     cy.get("@itemSalePrice")
-      .then(($linkText) => {
-        var itemsSalePriceTotal = 0;
-        var itemSalePrice = $linkText.split("$");
-        var i;
-        for (i = 0; i < itemSalePrice.length; i++) {
-          cy.log(itemSalePrice[i]);
+      .then((linkText) => {
+        let itemsSalePriceTotal = 0;
+        let itemSalePrice = linkText.split("$");
+        for (let i = 0; i < itemSalePrice.length; i++) {
           itemsSalePriceTotal += Number(itemSalePrice[i]);
         }
         itemsTotal += itemsSalePriceTotal;

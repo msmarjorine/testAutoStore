@@ -45,11 +45,11 @@ describe("Opening the individual product page", () => {
   it("Should open the page with then command", () => {
     cy.visit("/");
     cy.get("a.prdocutname")
-      .contains("Euphoria")
+      .contains("Benefit Bella Bamba")
       .click()
-      .then(function (itemHeaderText) {
-        console.log("Selected the following item: " + itemHeaderText.text());
-      });
-    cy.get(".productfilneprice").should("contain.text", "$44.10");
+      .then((itemHeaderText) =>
+        cy.log("Selected the following item: " + itemHeaderText.text())
+      );
+    cy.get(".productfilneprice").should("contain.text", "$28.00");
   });
 });

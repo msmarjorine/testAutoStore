@@ -15,7 +15,7 @@ describe("Check the Contact Us page", () => {
   });
 
   it("Should open the Contact Us page and submit the form", () => {
-    cy.submitTheForm(data.first_name, data.email, "my enquiry");
+    cy.submitTheForm(data.first_name, data.email, data.enquiry);
     cy.url().should("contain", "contact/success");
     cy.get("div.contentpanel").should(
       "contain",
@@ -23,7 +23,7 @@ describe("Check the Contact Us page", () => {
     );
   });
   it("Should not be able to submit the form with invalid email", () => {
-    cy.submitTheForm(data.first_name, "test_email", "my enquiry");
+    cy.submitTheForm(data.first_name, "test_email", data.enquiry);
     cy.url().should("not.contain", "contact/success");
     cy.get(".help-block .has-error").should(
       "have.text",

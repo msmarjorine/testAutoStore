@@ -9,8 +9,8 @@ describe("Iterate over elements", () => {
   });
 
   it("Log information of all haircare products", () => {
-    cy.get("div.fixed_wrapper .prdocutname").each(($el, index, $list) => {
-      cy.log("Index: " + index + ": " + $el.text());
+    cy.get("div.fixed_wrapper .prdocutname").each((el, i) => {
+      cy.log(`Index: ${i}: ${el.text()}`);
     });
   });
   it("Add specific product to basket", () => {

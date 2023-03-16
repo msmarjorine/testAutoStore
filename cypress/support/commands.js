@@ -45,27 +45,23 @@ Cypress.Commands.add("submitTheForm", (name, email, enquiry) => {
   cy.get('button[title="Submit"]').click();
 });
 
-Cypress.Commands.add("addProductToBasket", () => {
-  globalThis.data.productName.forEach(function (element) {
-    cy.addProductToBasket(element).then(() => {
-      //debugger
-    });
-  });
-  cy.get(".dropdown-toggle > .label").should("have.text", 3);
-});
 Cypress.Commands.add("selectProduct", (productName) => {
-  cy.get("div.fixed_wrapper .prdocutname").each(($el, index, $list) => {
-    if ($el.text().includes(productName)) {
-      cy.wrap($el).click();
-    }
+  cy.get("div.fixed_wrapper .prdocutname").each((el) => {
+    if (el.text().includes(productName)) cy.wrap(el).click();
   });
 });
 
-Cypress.Commands.add("addProductToBasket", (productName) => {
+/* Cypress.Commands.add("addProductToBasket", (productName) => {
   cy.get("div.fixed_wrapper .prdocutname").each(($el, index, $list) => {
     if ($el.text() === productName) {
       cy.log($el.text());
       cy.get(".productcart").eq(index).click();
     }
+  });
+}); */
+
+Cypress.Commands.add("addProductToBasket", (productName) => {
+  cy.get("div.fixed_wrapper .prdocutname").each((el, i) => {
+    if (el.text() === productName) cy.get(".productcart").eq(i).click();
   });
 });
