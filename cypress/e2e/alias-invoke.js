@@ -30,6 +30,8 @@ describe("Alias and Invoke", () => {
     cy.get("@header").should("have.css", "border-color", "rgb(16, 16, 16)");
     cy.get("div.navbar-right").as("headerLinks");
     cy.get("@headerLinks").children("div").should("have.length", 4);
+    cy.get("img[alt='Automation Test Store']").as("logo");
+    cy.get("@logo").should("have.attr", "title", "Automation Test Store");
   });
 
   it("Calculate total of normal and sale products", () => {
