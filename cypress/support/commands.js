@@ -24,6 +24,10 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+Cypress.Commands.add("hover", (element) => {
+  cy.get(element).trigger("mouseover");
+});
+
 Cypress.Commands.add("visitStoreContactpage", () => {
   cy.get(".info_links_footer > li > a").contains("Contact Us").click();
 });
