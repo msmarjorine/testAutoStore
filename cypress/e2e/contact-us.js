@@ -10,7 +10,7 @@ describe("Check the Contact Us page", () => {
   });
 
   beforeEach(() => {
-    cy.visitStoreHomepage();
+    cy.visit("/");
     cy.visitStoreContactpage();
   });
 

@@ -8,7 +8,7 @@ describe("Add multiple items to the basket", () => {
   });
 
   beforeEach(() => {
-    cy.visitStoreHomepage();
+    cy.visit("/");
     cy.clickOnHairProducts();
   });
 

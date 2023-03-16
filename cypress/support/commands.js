@@ -24,10 +24,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add("visitStoreHomepage", () => {
-  cy.visit("/");
-});
-
 Cypress.Commands.add("visitStoreContactpage", () => {
   cy.get(".info_links_footer > li > a").contains("Contact Us").click();
 });

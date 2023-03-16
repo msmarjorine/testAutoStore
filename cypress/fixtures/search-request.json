@@ -1,0 +1,9 @@
+{
+  "validRequest": [
+    "Lipstick",
+    "Bronzer Stick",
+    "Moisture Facial Cream",
+    "one Summer"
+  ],
+  "invalidRequest": "xxx"
+}
