@@ -14,7 +14,7 @@ describe("Check the Contact Us page", () => {
     cy.visitStoreContactpage();
   });
 
-  it("Should open the Contact Us page and submit the form", () => {
+  it("Should open the Contact Us page and submit the form with valid data", () => {
     cy.submitTheForm(data.first_name, data.email, data.enquiry);
     cy.url().should("contain", "contact/success");
     cy.get("div.contentpanel").should(
