@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe.skip("Register and log in with valid data", function () {
+describe("Register and log in with valid data", function () {
   before(function () {
     cy.fixture("newUser").then(function (data) {
       globalThis.data = data;
@@ -90,7 +90,7 @@ describe("Try to register and login with invalid data", () => {
       .should("contain", "Email Address does not appear to be valid!");
   });
 
-  it.only("User should not be able to login with invalid password", () => {
+  it("User should not be able to login with invalid password", () => {
     cy.loginCommand(data.existingUser.login, data.existingUser.wrongPassword);
     cy.url().should("contain", "rt=account/login");
     cy.get("div.alert-danger").should(

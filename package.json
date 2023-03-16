@@ -4,7 +4,8 @@
   "description": "Cypress project",
   "main": "index.js",
   "scripts": {
-    "headless": "npx cypress run --browser chrome"
+    "headless": "npx cypress run --browser chrome",
+    "runAll-cloud": "npx cypress run -b chrome --record --key f9720f03-bce2-4f16-a35d-43517c9d696b"
   },
   "repository": {
     "type": "git",

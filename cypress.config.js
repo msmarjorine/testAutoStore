@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: "cyw1mg",
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
@@ -14,3 +15,6 @@ module.exports = defineConfig({
     videoUploadOnPasses: false,
   },
 });
+
+//record Key for Cypress Cloud
+// f9720f03-bce2-4f16-a35d-43517c9d696b
