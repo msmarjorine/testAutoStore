@@ -1,0 +1,34 @@
+{
+  "validUser": {
+    "firstName": "Walter",
+    "lastName": "Peters",
+    "email": "duis@icloud.net",
+    "telephone": "1-618-243-3101",
+    "address": "886-8990 Aenean Ave",
+    "city": "Hobart",
+    "state": "Tasmania",
+    "zip": "17773",
+    "country": "Australia",
+    "login": "wpeters",
+    "password": "UVH63VWY6BW"
+  },
+  "invalidUser": {
+    "firstName": "Miley",
+    "lastName": "Cyrus",
+    "email": "miley.com",
+    "telephone": "1-618-243-3101",
+    "address": "886-8990 Aenean Ave",
+    "city": "Hobart",
+    "state": "California",
+    "zip": "17773",
+    "country": "United States",
+    "login": "miley",
+    "password": "gUFr698Ys"
+  },
+  "existingUser": {
+    "login": "medvedko",
+    "password": "bear84",
+    "wrongPassword": "bear86",
+    "firstName": "Masha"
+  }
+}

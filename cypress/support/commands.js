@@ -51,17 +51,29 @@ Cypress.Commands.add("selectProduct", (productName) => {
   });
 });
 
-/* Cypress.Commands.add("addProductToBasket", (productName) => {
-  cy.get("div.fixed_wrapper .prdocutname").each(($el, index, $list) => {
-    if ($el.text() === productName) {
-      cy.log($el.text());
-      cy.get(".productcart").eq(index).click();
-    }
-  });
-}); */
+Cypress.Commands.add("createAccount", (user) => {
+  const randNumber = Math.floor(Math.random() * 11000);
+  const randEmail = randNumber + user.email;
+  const randLogin = randNumber + user.login;
 
-Cypress.Commands.add("addProductToBasket", (productName) => {
-  cy.get("div.fixed_wrapper .prdocutname").each((el, i) => {
-    if (el.text() === productName) cy.get(".productcart").eq(i).click();
-  });
+  cy.get("#AccountFrm_firstname").type(user.firstName);
+  cy.get("#AccountFrm_lastname").type(user.lastName);
+  cy.get("#AccountFrm_email").type(randEmail);
+  cy.get("#AccountFrm_address_1").type(user.address);
+  cy.get("#AccountFrm_city").type(user.city);
+  cy.get("#AccountFrm_country_id").select(user.country);
+  cy.get("#AccountFrm_postcode").type(user.zip);
+  cy.get("#AccountFrm_zone_id").select(user.state);
+  cy.get("#AccountFrm_loginname").type(randLogin);
+  cy.get("#AccountFrm_password").type(user.password);
+  cy.get("#AccountFrm_confirm").type(user.password);
+  cy.get("#AccountFrm_newsletter0").check();
+  cy.get("#AccountFrm_agree").check();
+  cy.get("button[title='Continue']").click();
+});
+
+Cypress.Commands.add("loginCommand", (login, password) => {
+  cy.get("#loginFrm_loginname").type(login);
+  cy.get("#loginFrm_password").type(password);
+  cy.get("button[title='Login']").click();
 });
