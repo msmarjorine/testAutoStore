@@ -82,3 +82,10 @@ Cypress.Commands.add("loginCommand", (login, password) => {
   cy.get("#loginFrm_password").type(password);
   cy.get("button[title='Login']").click();
 });
+
+Cypress.Commands.add("selectBrandByNumber", (number) => {
+  cy.get("#brandcarousal").children("li").eq(number).find("a").click();
+});
+Cypress.Commands.add("selectBrandByName", (brandName) => {
+  cy.get(`img.internal[alt='${brandName}']`).click();
+});

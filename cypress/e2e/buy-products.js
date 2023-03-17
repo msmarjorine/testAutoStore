@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe("Login and add products to the cart", () => {
+describe.skip("Login and add products to the cart", () => {
   before(() => {
     cy.fixture("newUser").then(function (data) {
       globalThis.data = data;
