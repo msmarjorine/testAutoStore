@@ -11,10 +11,10 @@ describe("Register and log in with valid data", function () {
 
   beforeEach(function () {
     cy.visit("/");
-    cy.get("#customer_menu_top").find("a").click();
   });
 
   it("Register with valid data", function () {
+    cy.get("#customer_menu_top").find("a").click();
     cy.get("button[title='Continue']").click();
 
     cy.intercept("POST", "**/index.php?rt=account/create").as("registerReq");
@@ -48,7 +48,7 @@ describe("Register and log in with valid data", function () {
 
     cy.intercept("POST", "**/index.php?rt=account/login").as("loginReq");
 
-    cy.loginCommand(data.existingUser.login, data.existingUser.password);
+    cy.loginCommand(data.existingUser2.login, data.existingUser2.password);
 
     cy.wait("@loginReq").its("response.statusCode").should("eq", 302);
     cy.url().should("contain", "rt=account/account");

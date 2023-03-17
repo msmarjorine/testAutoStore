@@ -77,6 +77,7 @@ Cypress.Commands.add("createAccount", (user) => {
 });
 
 Cypress.Commands.add("loginCommand", (login, password) => {
+  cy.visit("/index.php?rt=account/login");
   cy.get("#loginFrm_loginname").type(login);
   cy.get("#loginFrm_password").type(password);
   cy.get("button[title='Login']").click();

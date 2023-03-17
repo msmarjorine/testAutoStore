@@ -30,5 +30,11 @@
     "password": "bear84",
     "wrongPassword": "bear86",
     "firstName": "Masha"
+  },
+  "existingUser2": {
+    "login": "3118wpeters",
+    "password": "UVH63VWY6BW",
+    "wrongPassword": "bear86",
+    "firstName": "Walter"
   }
 }
