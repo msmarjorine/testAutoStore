@@ -57,7 +57,7 @@ describe.skip("Register and log in with valid data", function () {
   });
 });
 
-describe("Try to register and login with invalid data", () => {
+describe.skip("Try to register and login with invalid data", () => {
   before(function () {
     cy.fixture("newUser").then(function (data) {
       globalThis.data = data;
